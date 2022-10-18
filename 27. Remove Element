@@ -1,0 +1,13 @@
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int p1 = 0, p2 = 0;
+        while (p2 < nums.length) {
+            while (nums[p1] != val)if(++p1 >= nums.length)return p1;
+            p2 = p1;
+            while (nums[p2] == val)if(++p2 >= nums.length)return p1;
+            nums[p1] = nums[p2];
+            nums[p2] = val;
+        }
+        return p1;
+    }
+}
