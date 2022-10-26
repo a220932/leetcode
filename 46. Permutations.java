@@ -1,10 +1,5 @@
 class Solution {
-    public List<List<Integer>> permute(int[] nums) {
-        if (nums.length == 0){
-            List<List<Integer>> LL = new LinkedList<List<Integer>>();
-            return LL;
-        }
-        
+    public List<List<Integer>> permute(int[] nums) {        
         return permutation(nums, 0);
     }
     public void swap(int[] nums, int i, int j) {
