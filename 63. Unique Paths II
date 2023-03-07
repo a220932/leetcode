@@ -1,0 +1,39 @@
+class Solution {
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+
+        int h = obstacleGrid.length, w = obstacleGrid[0].length;
+        if(obstacleGrid[h - 1][w - 1] == 1)
+            return 0;
+
+        for(int i = 0; i < h; i++){
+            if(obstacleGrid[i][0] == 1)
+                break;
+            obstacleGrid[i][0] = -1;
+        }
+            
+        for(int j = 0; j < w; j++){
+            if(obstacleGrid[0][j] == 1)
+                break;
+            obstacleGrid[0][j] = -1;
+        }
+
+        if (h>1 && w>1){
+            for(int i = 1; i < h; i++){
+                for(int j = 1; j < w; j++){
+                    if(obstacleGrid[i][j] != 1)
+                        obstacleGrid[i][j] = locate(i,j,obstacleGrid);
+                }
+            }
+        }
+        return -obstacleGrid[h - 1][w - 1];
+    }
+    int locate(int i, int j, int[][] ob){
+        int k = 0;
+        if(ob[i-1][j] <= 0)
+            k += ob[i-1][j];
+        if(ob[i][j-1] <= 0)
+            k += ob[i][j-1];
+        return k;
+    }
+    
+}
