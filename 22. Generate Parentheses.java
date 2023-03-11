@@ -7,11 +7,13 @@ class Solution {
         return list;
     }
     void genp(int c, int p, String str){
+        if (p == 0){
+            list.add(str);
+            return;
+        }
         if (c != 0)
             genp(c-1, p, str+"(");
         if (p > c)
             genp(c, p-1, str+")");
-        if (c == 0 && p == 0)
-            list.add(str);
     }
 }
